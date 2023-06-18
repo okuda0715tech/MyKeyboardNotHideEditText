@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.kurodai0715.mykeyboardnothideedittext">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyKeyboardNotHideEditText"
+        tools:targetApi="31">
+        <!--
+        adjustPan の場合
+          画面が自動的にスクロールして、EditTextが見える位置まで移動する。
+          ただし、たとえ ScrollView が存在したとしても、
+          キーボード表示中にユーザーが画面をスクロールすることはできない。
+          ユーザーは、キーボードを閉じないと隠れている View を視認することはできないため、
+          特別な理由がない限りは、 adjustResize を使用する方が好ましい。
+        adjustResize の場合
+          画面が自動的にスクロールせず、EditTextがソフトキーボードで隠れる。
+          キーボードが表示されると Activity の画面サイズが変わるため、
+          「画面の上部」と「画面の下部」にアンカーがあり、「画面の中央」が圧縮されても問題ない場合は、
+          この属性を使用することができる。
+         -->
+        <!--　TODO adjustUnspecified を指定した場合の動作も確認したい -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SecondActivity"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name=".ThirdActivity"
+            android:windowSoftInputMode="stateVisible" />
+    </application>
+
+</manifest>
